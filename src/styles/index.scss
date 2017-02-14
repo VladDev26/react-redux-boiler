@@ -1,15 +1,9 @@
-@import '_variables';
-// @import '_fonts';
-@import '_mixins';
-
 *{box-sizing:border-box;padding: 0;margin: 0;}
-a{text-decoration:none;color:#000;&:focus,&:hover{outline:none;text-decoration:none;color: #000;}}
+a{text-decoration:none;&:focus,&:hover{outline:none;text-decoration:none;color:#ddd;}}
 ul{list-style: none;}
 img{max-width: 100%; height: auto;}
 
 
-@import 'parts/_header';
 
-
-@import '_queries';
+html,body{background: #2a2b32; color: #ddd;}
 

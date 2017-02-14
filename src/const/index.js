@@ -1,6 +1,22 @@
 let url = 'http://vladdev.zzz.com.ua/examples/eleken/images/';
 
-const products = [
+export const navbar = [
+	{
+		name: 'home',
+		path: 'home'
+	},
+	{
+		name: 'news',
+		path: 'news'
+	},
+	{
+		name: 'sale',
+		path: 'sale'
+	}
+];
+
+
+export const products = [
 	{
 		id: 1,
 		tags: ['all', 'shorts'],
@@ -92,4 +108,3 @@ const products = [
 	}
 ];
 
-export default products;
