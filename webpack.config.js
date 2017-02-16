@@ -1,5 +1,6 @@
 var path = require('path');
 var webpack = require('webpack');
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 
 var production = new webpack.DefinePlugin({
@@ -27,68 +28,28 @@ module.exports = {
       },
       
       { 
-        test: /\.css$/i, 
-        use: ['style-loader', 'css-loader'] 
+        test: /\.scss$/i, 
+        use: ExtractTextPlugin.extract(['css-loader', 'sass-loader'])
+      },
+
+      { 
+        test: /.*\.(ttf|eot|woff2?|svg)(\?.*$|$)/i,
+        loader: "file-loader?name=fonts/[name]/[name].[ext]"
       },
       { 
-        test: /\.scss$/i, 
-        use: ['style-loader', 'css-loader', 'sass-loader'] 
+        test: /\.html$/i,
+        loader: "html-loader"
+      },
+
+      { 
+        test: /.*\.(gif|png|jpg)$/i, 
+        loader: "file-loader?name=img/[name].[ext]"
       }
     ],
   },
   plugins: [
     // production,
-    // new webpack.optimize.UglifyJsPlugin()
+    // new webpack.optimize.UglifyJsPlugin(),
+    new ExtractTextPlugin('styles/bundle.min.css')
   ]
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// var path = require('path');
-// var webpack = require('webpack');
-
-
-// var production = new webpack.DefinePlugin({
-//   'process.env': {
-//     NODE_ENV: JSON.stringify('production')
-//   }
-// });
-
-
-// module.exports = {
-//   entry: path.resolve(__dirname + '/src/index.js'),
-//   output: {
-//     path: 'assets',
-//     filename: 'bundle.js',
-//     publicPath: '/assets/'
-//   },
-  
-//   module: {
-//     loaders: [
-//       { 
-//         test: /\.js$/, 
-//         exclude: /(node_modules)/,
-//         loader: 'babel-loader',
-//         query: { presets: ['es2015', 'react', 'stage-2'] }
-//       },
-      
-//       { test: /\.css$/i, loader: 'style-loader!css-loader' },
-//       { test: /\.scss$/i, loader: 'style-loader!css-loader!sass-loader' }
-//     ],
-//   },
-//   plugins: [
-//     production,
-//     new webpack.optimize.UglifyJsPlugin()
-//   ]
-// };
